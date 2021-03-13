@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:view>
+
+    <h:form>
+        <h3>Nova Requisição</h3>
+
+        Paciente: <br />
+        <h:selectOneMenu value="#{novaRequisicaoBean.requisicao.paciente}">
+            <f:selectItems value="#{novaRequisicaoBean.pacientes}" var="p"
+                itemValue="#{p.id}" itemLabel="#{p.nome}"/>
+        </h:selectOneMenu>
+
+        <br />
+
+        Forma de Pagto: <br />
+        <h:selectOneMenu value="#{novaRequisicaoBean.requisicao.formaPagto}">
+            <f:selectItems value="#{novaRequisicaoBean.formasPagtos}" var="fp"
+                itemValue="#{fp.id}" itemLabel="#{fp.descricao}"/>
+        </h:selectOneMenu>
+
+        <br />
+
+        <h:selectManyCheckbox value="#{novaRequisicaoBean.requisicao.examesReq}">
+            <f:selectItems value="#{novaRequisicaoBean.exames}" var="e"
+                           itemValue="#{e.id}" itemLabel="#{e.descricao}" />
+        </h:selectManyCheckbox>
+
+        <br />
+
+        <h:commandButton value="Salvar" action="#{novaRequisicaoBean.salvar}" />&#160;
+        <h:commandButton value="Cancelar" action="index?faces-redirect=true" />
+
+    </h:form>
+
+</f:view>
+</html>
